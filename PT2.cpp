@@ -1,3 +1,9 @@
+/*  Name: Joben Gabin
+    Activity: Performance Task 2
+    Description: Conversion Console App using functions [Dollar to Peso & Peso to Dollar]
+    this is also a debugging activity
+    Date: 29/10/2021
+*/
 #include <iostream>
 
 
@@ -20,12 +26,12 @@ void dollarsToPeso(float rate, unsigned dollars = 0)
 void pesoToDollars(float rate, unsigned Peso = 0)
 {
  cout.imbue(locale(cout.getloc(),new group_facet));
- cout << "\n$" << Peso << " US = " << (rate * Peso) << " Pesos. \n";
+ cout << "\nPHP " << Peso << " PHP = " << (rate * Peso) << " USD. \n";
 };
 
 void promptAndWait(){
     cin.get();
-    cout << "\nPress Enter or Return to Continue...";
+    cout << "\nWould you like to try again?";
 }
 
 
@@ -39,12 +45,13 @@ int main(){
     unsigned dollarsIn;
     unsigned pesosIn;
     int ch;
+    char choice;
     int ans=0;
     
     do{
         system("cls");
         cout << endl;
-        cout << "Dollar to Peso1 Conversion App" << endl;
+        cout << "Dollar to Peso Conversion App" << endl;
         cout << "[1] Dollar to Peso" << endl;
         cout << "[2] Peso to Dollar" << endl;
         cout << "[0] Exit The conversion App" << endl;
@@ -66,7 +73,7 @@ int main(){
             case 2: {
                 cout << "\n Convert Peso To Dollars" << endl;
                 pesoToDollars(convertionRate=0.020,pesosIn=1);
-                cout << "\n Enter a Peso amount (without Peso sign, commas or a decimal): [####] ";
+                cout << "Enter a Peso amount (without Peso sign, commas or a decimal): [####] ";
                 cin >> pesosIn;
                 pesoToDollars(convertionRate,pesosIn);
                 promptAndWait();
@@ -83,8 +90,12 @@ int main(){
                 cout << "Invalid Input!";
                 promptAndWait();
             }
-        }
-    }
+        }cout <<"\nPress Y to continue or N to terminate the app."<< endl;
+        cin >> choice;
+        if (choice != 'Y' and choice != 'y' and choice != 'N' and choice != 'n') 
+            cout << choice << " is not a valid option. Try again" << endl; 
+    } while (choice !='N' && choice !='n');
+    
     while(ans = 0);
 };
 
